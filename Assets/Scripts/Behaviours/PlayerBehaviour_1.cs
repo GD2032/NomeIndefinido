@@ -22,7 +22,4 @@ public class PlayerBehaviour_1 : MonoBehaviour
         velocity_x = Input.GetAxisRaw("Horizontal");   
         rbPlayer.velocity = new Vector2(velocity_x * speed,rbPlayer.velocity.y);              
     }
-    static void Fade()
-    {
-    }
 }
