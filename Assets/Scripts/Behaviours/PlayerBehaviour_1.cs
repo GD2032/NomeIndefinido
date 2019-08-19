@@ -5,20 +5,26 @@ using UnityEngine;
 public class PlayerBehaviour_1 : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rbPlayer;
+    [SerializeField] private GameObject InterfaceCanvas;
     [SerializeField] private float speed, forceJump, radius, groundTestP,wallTestP,wallTestD;
     private float velocity_x;
     private Collider2D[] olReturn;
     private bool inGround, frontRight;
     private RaycastHit2D wallTest;
+    private UI ui;
+   
     void Start()
-    { 
+    {
+        ui = InterfaceCanvas.GetComponent<UI>();
         speed = 6;
-        forceJump = 6;
+        forceJump = 12;
         radius = 0.3f;
         groundTestP = 0.65f;
+        ui.Fades(true,3,Random.Range(0,3));
     }
      void Update()
     {
+        
         inGround = GroundTest();
         Jump();
     }

@@ -6,13 +6,10 @@ using UnityEngine.UI;
 
     public class UI:MonoBehaviour
 {
-    [SerializeField] private Image[] TypesF;
+    [SerializeField] public Image[] TypesF;
     [SerializeField] private Canvas canvas;
     private Animator animator;
     private Image fade;
-    private float time;
-
-
 
     /// <summary>
     /// Inicia o fade tipo 1, podendo ser IN ou OUT
@@ -22,11 +19,12 @@ using UnityEngine.UI;
     /// /// <param name="type_fade">estilo do fade (Consultar Aragão)</param>
     public void Fades(bool in_or_out = true, float seconds = 1f, int type_fade = 1)
     {
+        //3 types of fades actually
        if (fade != null)
            Destroy(fade);
-        if (type_fade > 0 && type_fade <= TypesF.Length)
+        if (type_fade >= 0 && type_fade < TypesF.Length)
         {
-            fade = Instantiate(TypesF[type_fade - 1]);
+            fade = Instantiate(TypesF[type_fade]);
         }
        fade.transform.SetParent(canvas.transform, false);
        fade.GetComponent<Animator>().SetBool("Ativator", in_or_out);
@@ -35,7 +33,6 @@ using UnityEngine.UI;
     }
     void Start()
     {
-        Fades(true, 1, 1);
     }
     void Update()
     {
