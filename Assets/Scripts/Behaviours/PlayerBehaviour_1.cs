@@ -18,9 +18,9 @@ public class PlayerBehaviour_1 : MonoBehaviour
         ui = InterfaceCanvas.GetComponent<UI>();
         speed = 6;
         forceJump = 12;
-        radius = 0.3f;
-        groundTestP = 0.65f;
-        ui.Fades(true,3,Random.Range(1,4));
+        radius = 0.2f;
+        groundTestP = 0.2f;
+        ui.Fades(true,1,3);
     }
      void Update()
     {
@@ -38,11 +38,13 @@ public class PlayerBehaviour_1 : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetButtonDown("Fire1") && inGround)
+        if(Input.GetButton("Jump") && inGround)
         {
             rbPlayer.velocity = Vector2.up * forceJump;
             inGround = false;
         }
+        if (Input.GetButtonUp("Jump"))
+            rbPlayer.velocity = new Vector2(rbPlayer.velocity.x,0);
     }
     bool GroundTest()
     {

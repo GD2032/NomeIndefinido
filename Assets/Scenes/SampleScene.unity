@@ -253,8 +253,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170561413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.46, y: -1.514, z: 35.021088}
-  m_LocalScale: {x: 0.7742128, y: 3.0037956, z: 1}
+  m_LocalPosition: {x: -0.46, y: -1.265, z: 35.021088}
+  m_LocalScale: {x: 0.7742128, y: 3.5024257, z: 1}
   m_Children: []
   m_Father: {fileID: 1225549549}
   m_RootOrder: 2
@@ -884,5 +884,20 @@ PrefabInstance:
       propertyPath: InterfaceCanvas
       value: 
       objectReference: {fileID: 220187075}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: groundTestP
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491827, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc, type: 3}

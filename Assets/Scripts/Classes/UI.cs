@@ -19,7 +19,7 @@ using UnityEngine.UI;
     /// /// <param name="type_fade">estilo do fade (Consultar Aragão)</param>
     public void Fades(bool in_or_out = true, float seconds = 1f, int type_fade = 1)
     {
-        //3 types of fades actually
+        //4 types of fades actually
        if (fade != null)
            Destroy(fade);
         if (type_fade >= 0 && type_fade < TypesF.Length)
