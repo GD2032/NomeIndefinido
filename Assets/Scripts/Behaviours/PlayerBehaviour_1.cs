@@ -20,7 +20,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
         forceJump = 12;
         radius = 0.3f;
         groundTestP = 0.65f;
-        ui.Fades(true,3,Random.Range(0,3));
+        ui.Fades(true,3,Random.Range(1,4));
     }
      void Update()
     {
