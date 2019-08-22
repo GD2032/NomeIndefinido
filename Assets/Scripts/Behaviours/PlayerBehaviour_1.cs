@@ -6,7 +6,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rbPlayer;
     [SerializeField] private GameObject InterfaceCanvas;
-    [SerializeField] private float speed, forceJump, radius, groundTestP,wallTestP,wallTestD;
+    [SerializeField] private float speed, forceJump, radius, groundTestP,wallTestP,wallTestD,time;
     private float velocity_x;
     private Collider2D[] olReturn;
     private bool inGround, frontRight;
@@ -20,7 +20,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
         forceJump = 12;
         radius = 0.2f;
         groundTestP = 0.2f;
-        ui.Fades(true,1,3);
+        ui.Fades(true,1,2);
     }
      void Update()
     {
@@ -43,7 +43,8 @@ public class PlayerBehaviour_1 : MonoBehaviour
             rbPlayer.velocity = Vector2.up * forceJump;
             inGround = false;
         }
-        if (Input.GetButtonUp("Jump"))
+        print(rbPlayer.velocity.y);
+        if (Input.GetButtonUp("Jump") && rbPlayer.velocity.y >= 0)
             rbPlayer.velocity = new Vector2(rbPlayer.velocity.x,0);
     }
     bool GroundTest()
