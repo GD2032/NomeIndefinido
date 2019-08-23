@@ -6,7 +6,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rbPlayer;
     [SerializeField] private GameObject InterfaceCanvas;
-    [SerializeField] private float speed, forceJump, radius, groundTestP,wallTestP,wallTestD,time;
+    [SerializeField] private float speed, forceJump, radius, groundTestP,wallTestP,wallTestD,wallTestDY,time; //P = position; D = distance
     private float velocity_x;
     private Collider2D[] olReturn;
     private bool inGround, frontRight;
@@ -20,7 +20,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
         forceJump = 12;
         radius = 0.2f;
         groundTestP = 0.2f;
-        ui.Fades(true,1,2);
+        ui.Fades(true,1,Random.Range(1,4));
     }
      void Update()
     {
@@ -49,7 +49,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     }
     bool GroundTest()
     {
-        wallTest = Physics2D.Raycast(new Vector2(transform.position.x + wallTestP, transform.position.y), frontRight ? Vector2.right : Vector2.left, wallTestD);
+        //wallTest = Physics2D.Raycast(new Vector2(transform.position.x + wallTestP, transform.position.y), Vector2.up, wallTestD);
 
         olReturn = Physics2D.OverlapCircleAll(new Vector2(transform.position.x,transform.position.y - groundTestP), radius);
         foreach (Collider2D col in olReturn)
@@ -61,6 +61,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+        //Debug.DrawLine(transform.position + new Vector3(0.5f,-0.28f), transform.position + new Vector3(0.5f,0.28f),new Color(1,1,1));
         Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y - groundTestP), radius);
     }
 }
