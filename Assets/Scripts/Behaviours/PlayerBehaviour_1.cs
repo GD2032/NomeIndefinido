@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerBehaviour_1 : MonoBehaviour
 {
+    
     [SerializeField] private Rigidbody2D rbPlayer;
     [SerializeField] private GameObject InterfaceCanvas;
+    [SerializeField] private AudioClip[] sound;
     [SerializeField] private float speed, forceJump, radius, groundTestP,wallTestP,wallTestD,wallTestDY,time; //P = position; D = distance
     private float velocity_x;
+    private AudioSource outPutSound;
     private Collider2D[] olReturn;
     private bool inGround, frontRight;
     private RaycastHit2D wallTest;
@@ -15,6 +20,8 @@ public class PlayerBehaviour_1 : MonoBehaviour
    
     void Start()
     {
+        outPutSound = GetComponent<AudioSource>();
+        outPutSound.volume = 0.008f;
         ui = InterfaceCanvas.GetComponent<UI>();
         speed = 6;
         forceJump = 12;
@@ -40,6 +47,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     {
         if(Input.GetButton("Jump") && inGround)
         {
+            outPutSound.PlayOneShot(sound[Random.Range(0,4)]);
             rbPlayer.velocity = Vector2.up * forceJump;
             inGround = false;
         }
@@ -59,6 +67,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
         }
         return false;
     }
+
     private void OnDrawGizmos()
     {
         //Debug.DrawLine(transform.position + new Vector3(0.5f,-0.28f), transform.position + new Vector3(0.5f,0.28f),new Color(1,1,1));
