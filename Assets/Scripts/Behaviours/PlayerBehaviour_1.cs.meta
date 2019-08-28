@@ -4,8 +4,11 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - rbPlayer: {fileID: 4237110701281887031, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+  - rbPlayer: {instanceID: 0}
+  - InterfaceCanvas: {instanceID: 0}
+  - reflectShield: {fileID: 3977219388523025910, guid: c033464c42624b0429b8417bf4d13eb4,
       type: 3}
+  - clone: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

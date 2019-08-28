@@ -2125,6 +2125,12 @@ PrefabInstance:
       propertyPath: sound.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: ad9c2f50479aa8a41923120f3f4492ad, type: 3}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: reflectShield
+      value: 
+      objectReference: {fileID: 3977219388523025910, guid: c033464c42624b0429b8417bf4d13eb4,
+        type: 3}
     - target: {fileID: 7711561259692491827, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
         type: 3}
       propertyPath: m_GravityScale
