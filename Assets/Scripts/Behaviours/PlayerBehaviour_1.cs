@@ -12,6 +12,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     [SerializeField] private AudioClip[] sound;
     [SerializeField] private float speed,playerScaleX,playerScaleY, forceJump,forceWallJump, radius, groundTestP; //P = position; D = distance
     [SerializeField] private float mana, manaCount;
+    [SerializeField] private Vector2 jumpForce;
     private float velocity_x;
     private AudioSource outPutSound;
     private Collider2D[] olReturn;
@@ -42,8 +43,23 @@ public class PlayerBehaviour_1 : MonoBehaviour
             Moviment();
     }
     void Moviment(){
+        if (rbPlayer.velocity.y > 12)
+        {
+            //limit aleatory big jumps
+            rbPlayer.velocity = new Vector2(rbPlayer.velocity.x,12);
+        }
         velocity_x = Input.GetAxisRaw("Horizontal");
         rbPlayer.velocity = new Vector2(velocity_x * speed,rbPlayer.velocity.y);
+        switch (velocity_x)
+        {
+            case 1:
+                frontRight = true;
+                break;
+            case-1:
+                frontRight = false;
+                break;
+
+        }
     }
     void Jump()
     {
@@ -95,7 +111,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     {
         //Debug.DrawLine(transform.position + new Vector3(0.5f,-0.28f), transform.position + new Vector3(0.5f,0.28f),new Color(1,1,1));
         Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y - groundTestP), radius);
-     //   Debug.DrawRay(transform.position - new Vector3(frontRight ?  - playerScaleX - 0.1f :  + playerScaleX + 0.1f,  + playerScaleY / 2), Vector2.up,Color.green);
+     //Debug.DrawRay(transform.position - new Vector3(frontRight ?  - playerScaleX - 0.1f :  + playerScaleX + 0.1f,  + playerScaleY / 2), Vector2.up,Color.green);
 
     }
     IEnumerator ManaCount()
@@ -109,6 +125,16 @@ public class PlayerBehaviour_1 : MonoBehaviour
     }
     private void WallJump()
     {
-       // wallTest= Physics2D.Raycast(transform.position - new Vector3(frontRight ? transform.position.x - playerScaleX -0.1f : transform.position.x + playerScaleX + 0.1f,transform.position.y - playerScaleY/2),Vector2.up, playerScaleY);
+     wallTest = Physics2D.Raycast(transform.position - new Vector3(frontRight ? -playerScaleX/2 - 0.1f : playerScaleX/2 + 0.1f, -playerScaleY / 2 + 0.3f), Vector2.up, playerScaleY);
+        if (wallTest && !inGround)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                rbPlayer.AddForce(new Vector2(0, 600));
+   
+
+        }
+        if (rbPlayer.velocity.y < 0 && wallTest)
+            rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, -1.5f);
     }
+      
 }
