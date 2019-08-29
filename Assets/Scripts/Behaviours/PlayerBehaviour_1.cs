@@ -10,7 +10,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     [SerializeField] private Rigidbody2D rbPlayer;
     [SerializeField] private GameObject InterfaceCanvas, reflectShield, clone;
     [SerializeField] private AudioClip[] sound;
-    [SerializeField] private float speed, forceJump, radius, groundTestP,wallTestP,wallTestD,wallTestDY; //P = position; D = distance
+    [SerializeField] private float speed,playerScaleX,playerScaleY, forceJump,forceWallJump, radius, groundTestP; //P = position; D = distance
     [SerializeField] private float mana, manaCount;
     private float velocity_x;
     private AudioSource outPutSound;
@@ -25,10 +25,6 @@ public class PlayerBehaviour_1 : MonoBehaviour
         outPutSound = GetComponent<AudioSource>();
         outPutSound.volume = 0.008f;
         ui = InterfaceCanvas.GetComponent<UI>();
-        speed = 6;
-        forceJump = 12;
-        radius = 0.2f;
-        groundTestP = 0.2f;
         ui.Fades(true,1,Random.Range(1,4));
     }
      void Update()
@@ -37,32 +33,31 @@ public class PlayerBehaviour_1 : MonoBehaviour
         Jump();
         ChargeMana();
         ReflectShield();
+        print(rbPlayer.velocity.x);
     }
     void FixedUpdate()
     {
-        if(moviment)
+        WallJump();
+        if (moviment)
             Moviment();
     }
     void Moviment(){
-        velocity_x = Input.GetAxisRaw("Horizontal");   
-        rbPlayer.velocity = new Vector2(velocity_x * speed,rbPlayer.velocity.y);              
+        velocity_x = Input.GetAxisRaw("Horizontal");
+        rbPlayer.velocity = new Vector2(velocity_x * speed,rbPlayer.velocity.y);
     }
     void Jump()
     {
         if(Input.GetButton("Jump") && inGround)
         {
             outPutSound.PlayOneShot(sound[Random.Range(0,4)]);
-            rbPlayer.velocity = Vector2.up * forceJump;
+            rbPlayer.AddForce( Vector2.up * forceJump);
             inGround = false;
         }
-        print(rbPlayer.velocity.y);
         if (Input.GetButtonUp("Jump") && rbPlayer.velocity.y >= 0)
             rbPlayer.velocity = new Vector2(rbPlayer.velocity.x,0);
     }
     bool GroundTest()
     {
-        //wallTest = Physics2D.Raycast(new Vector2(transform.position.x + wallTestP, transform.position.y), Vector2.up, wallTestD);
-
         olReturn = Physics2D.OverlapCircleAll(new Vector2(transform.position.x,transform.position.y - groundTestP), radius);
         foreach (Collider2D col in olReturn)
         {
@@ -100,6 +95,8 @@ public class PlayerBehaviour_1 : MonoBehaviour
     {
         //Debug.DrawLine(transform.position + new Vector3(0.5f,-0.28f), transform.position + new Vector3(0.5f,0.28f),new Color(1,1,1));
         Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y - groundTestP), radius);
+     //   Debug.DrawRay(transform.position - new Vector3(frontRight ?  - playerScaleX - 0.1f :  + playerScaleX + 0.1f,  + playerScaleY / 2), Vector2.up,Color.green);
+
     }
     IEnumerator ManaCount()
     {
@@ -109,5 +106,9 @@ public class PlayerBehaviour_1 : MonoBehaviour
             execute = false;
         }
         yield return mana = manaCount - Time.time;
+    }
+    private void WallJump()
+    {
+       // wallTest= Physics2D.Raycast(transform.position - new Vector3(frontRight ? transform.position.x - playerScaleX -0.1f : transform.position.x + playerScaleX + 0.1f,transform.position.y - playerScaleY/2),Vector2.up, playerScaleY);
     }
 }

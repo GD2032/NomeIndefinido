@@ -2083,12 +2083,12 @@ PrefabInstance:
     - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
         type: 3}
       propertyPath: radius
-      value: 0.26
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
         type: 3}
       propertyPath: groundTestP
-      value: 0.2
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
         type: 3}
@@ -2131,10 +2131,65 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3977219388523025910, guid: c033464c42624b0429b8417bf4d13eb4,
         type: 3}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: forceJump
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: forceWallJump
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: PlayerScale_X
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: playerScaleY
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491839, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: playerScaleX
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7711561259692491827, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
         type: 3}
       propertyPath: m_GravityScale
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491827, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491827, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491827, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491827, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711561259692491826, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 8aea9d1f7808bea43a8978754c45cb2e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebacfdbcdc98db14c9b0747a0d9fe6bc, type: 3}
