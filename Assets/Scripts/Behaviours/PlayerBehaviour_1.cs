@@ -111,7 +111,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     {
         //Debug.DrawLine(transform.position + new Vector3(0.5f,-0.28f), transform.position + new Vector3(0.5f,0.28f),new Color(1,1,1));
         Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y - groundTestP), radius);
-     //Debug.DrawRay(transform.position - new Vector3(frontRight ?  - playerScaleX - 0.1f :  + playerScaleX + 0.1f,  + playerScaleY / 2), Vector2.up,Color.green);
+        //Debug.DrawRay(transform.position - new Vector3(frontRight ?  - playerScaleX - 0.1f :  + playerScaleX + 0.1f,  + playerScaleY / 2), Vector2.up,Color.green);
 
     }
     IEnumerator ManaCount()
@@ -125,7 +125,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
     }
     private void WallJump()
     {
-     wallTest = Physics2D.Raycast(transform.position - new Vector3(frontRight ? -playerScaleX/2 - 0.1f : playerScaleX/2 + 0.1f, -playerScaleY / 2 + 0.3f), Vector2.up, playerScaleY);
+        wallTest = Physics2D.Raycast(transform.position - new Vector3(frontRight ? -playerScaleX/2 - 0.1f : playerScaleX/2 + 0.1f, -playerScaleY / 2 + 0.3f), Vector2.up, playerScaleY);
         if (wallTest && !inGround)
         {
             if (Input.GetKeyDown(KeyCode.Space))
