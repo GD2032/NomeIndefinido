@@ -63,13 +63,13 @@ public class PlayerBehaviour_1 : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetButton("Jump") && inGround)
+        if((Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow)) && inGround)
         {
             outPutSound.PlayOneShot(sound[Random.Range(0,4)]);
             rbPlayer.AddForce( Vector2.up * forceJump);
             inGround = false;
         }
-        if (Input.GetButtonUp("Jump") && rbPlayer.velocity.y >= 0)
+        if ((Input.GetButtonUp("Jump") || Input.GetKeyUp(KeyCode.UpArrow)) && rbPlayer.velocity.y >= 0)
             rbPlayer.velocity = new Vector2(rbPlayer.velocity.x,0);
     }
     bool GroundTest()
@@ -128,7 +128,7 @@ public class PlayerBehaviour_1 : MonoBehaviour
         wallTest = Physics2D.Raycast(transform.position - new Vector3(frontRight ? -playerScaleX/2 - 0.1f : playerScaleX/2 + 0.1f, -playerScaleY / 2 + 0.3f), Vector2.up, playerScaleY);
         if (wallTest && !inGround)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Jump")||Input.GetKeyDown(KeyCode.UpArrow))
                 rbPlayer.AddForce(new Vector2(0, 600));
    
 
